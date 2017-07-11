@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// Application-wide Sass variables
+// -----------------------------------------------------------------------------
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @see {mixin} respond-to
+$breakpoints: (
+  'extrasmall': '(min-width: 480px)',
+  'small': '(min-width: 768px)',
+  'medium': '(min-width: 992px)',
+  'large': '(min-width: 1200px)',
+) !default;
+
+/// Text color
+/// @type Color
+$text-color: rgb(75, 75, 75) !default;
+
+/// Headings color
+/// @type Color
+$headings-color: rgb(13, 13, 13) !default;
+
+/// Theme color
+/// @type Color
+$theme-color: rgb(30, 193, 133) !default;
+
+/// Theme color light
+/// @type Color
+$theme-color-light: rgb(131, 191, 132) !default;
