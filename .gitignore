@@ -1,0 +1,9 @@
+.tern-port
+/node_modules
+/dist/bundles
+/dist/*.html
+npm-debug.log
+compressed/*
+package/*.zip
+.DS_Store
+.projectile
