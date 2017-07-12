@@ -1,8 +1,6 @@
 .tern-port
-/node_modules
-/dist
+node_modules
+dist/*hot-module*
 npm-debug.log
-compressed/*
-package/*.zip
 .DS_Store
 .projectile
