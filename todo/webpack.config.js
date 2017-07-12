@@ -36,9 +36,6 @@ const common = {
       PATHS.plugins
     ]
   },
-  externals: {
-    'jquery': 'jQuery'
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/pages/index.hbs',
