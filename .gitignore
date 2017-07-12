@@ -1,7 +1,6 @@
 .tern-port
 /node_modules
-/dist/bundles
-/dist/*.html
+/dist
 npm-debug.log
 compressed/*
 package/*.zip
