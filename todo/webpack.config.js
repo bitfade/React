@@ -34,11 +34,7 @@ const common = {
       PATHS.css,
       PATHS.js,
       PATHS.plugins
-    ],
-    alias: {
-      jquery: 'libs/jquery-3.1.1.min.js'
-      // bootstrap: "plugins/bootstrap.min.js"
-    }
+    ]
   },
   externals: {
     'jquery': 'jQuery'
@@ -54,11 +50,6 @@ const common = {
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader'
-      },
-      {
-        test: /\.js$/,
-        include: PATHS.plugins,
-        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       },
       {
         test: /\.(svg|png|gif|jpg|jpeg)$/,

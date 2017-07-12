@@ -2,7 +2,7 @@
 'use strict'
 
 import 'main.scss'
-// import 'plugins/bootstrap'
+import 'plugins/bootstrap'
 // import React from 'react'
 // import ReactDOM from 'react-dom'
 
