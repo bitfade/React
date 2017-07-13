@@ -137,7 +137,7 @@ class App extends React.Component {
 
   removeTodo (id) {
     this.setState((prevState, props) => ({
-      todos: prevState.todos.filter((v,i) => i !== id )
+      todos: prevState.todos.filter((v, i) => i !== id)
     }))
   }
 
