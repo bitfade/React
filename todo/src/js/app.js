@@ -39,30 +39,63 @@ class TodoNew extends React.Component {
 
   render () {
     return (
-      <form className="form-inline" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          className="form-control mb-2 mr-sm-2 mb-sm-0"
-          value={this.state.value}
-          placeholder={this.props.placeholder}
-          onChange={this.handleChange}
-        />
-        <button type="submit" className="btn btn-primary">Add</button>
+      <form className="form todo-new" onSubmit={this.handleSubmit}>
+        <div className="input-group">
+          <input
+            type="text"
+            className="form-control"
+            value={this.state.value}
+            placeholder={this.props.placeholder}
+            onChange={this.handleChange}
+          />
+          <span className="input-group-btn">
+            <button type="submit" className="btn btn-primary">Add</button>
+          </span>
+        </div>
       </form>
     )
   }
 }
 
-const Todo = (props) => {
-  return (
-    <li className="list-group-item">{props.text}</li>
-  )
+class Todo extends React.Component {
+  constructor (props) {
+    super(props)
+    this.id = props.id
+    this.toggle = this.toggle.bind(this)
+    this.delete = this.delete.bind(this)
+  }
+
+  toggle (e) {
+    console.log('toggle', this.id)
+  }
+
+  delete (e) {
+    console.log('delete', this.id)
+  }
+
+  render () {
+    const className = 'todo-status fa fa-check' + ((this.props.done ? ' text-success' : ''))
+    return (
+      <li className="list-group-item todo">
+        <i className={className} onClick={this.toggle}></i>
+        {this.props.text}
+        <i className="todo-delete fa fa-minus-circle text-danger" onClick={this.delete}></i>
+      </li>
+    )
+  }
 }
 
 const TodoList = (props) => {
   return (
-    <ul className="list-group">
-      {props.list.map((v, i) => <Todo id={i} text={v.text} done={v.done}/>)}
+    <ul className="list-group todo-list">
+      {props.list.map((v, i) => <Todo
+        key={i}
+        id={i}
+        text={v.text}
+        done={v.done}
+        toggle={props.toggle}
+        remove={props.remove}
+      />)}
     </ul>
   )
 }
@@ -71,6 +104,8 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.addTodo = this.addTodo.bind(this)
+    this.toggleTodo = this.toggleTodo.bind(this)
+    this.removeTodo = this.removeTodo.bind(this)
     this.state = {
       todos: [
         {
@@ -78,8 +113,8 @@ class App extends React.Component {
           text: 'Todo 1'
         },
         {
-          done: false,
-          text: 'Todo 2'
+          done: true,
+          text: 'Very very long Todo 2'
         }
       ]
     }
@@ -89,16 +124,28 @@ class App extends React.Component {
     console.log(value)
   }
 
+  toggleTodo (id) {
+    console.log(id)
+  }
+
+  removeTodo (id) {
+    console.log(id)
+  }
+
   render () {
     return (
-      <div>
-        <Title text="Todo Application"/>
+      <div className="todo-application">
+        <Title text="Todo React Application"/>
         <TodoNew
           placeholder="New Todo"
           value=""
           add={this.addTodo}
         />
-        <TodoList list={this.state.todos}/>
+        <TodoList
+          list={this.state.todos}
+          toggle={this.toggleTodo}
+          remove={this.removeTodo}
+        />
       </div>
     )
   }

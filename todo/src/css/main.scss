@@ -3,3 +3,28 @@
 body {
   padding-top: 5rem;
 }
+
+.todo-application {
+  max-width: 440px;
+  margin: auto;
+}
+
+.todo-new {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.todo {
+  cursor: pointer;
+}
+
+.todo-status {
+  color: #464E57;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.todo-delete {
+  margin-left: auto;
+  font-size: 20px;
+}
