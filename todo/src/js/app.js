@@ -13,41 +13,80 @@ if (module.hot) {
 
 const Title = props => <h1>{props.text}</h1>
 
-const TodoNew = (props) => {
+class TodoNew extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      value: this.props.value
+    }
+  }
+
+  handleChange (e) {
+    this.setState({
+      value: e.target.value
+    })
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+    this.props.add(this.state.value)
+    this.setState({
+      value: ''
+    })
+  }
+
+  render () {
+    return (
+      <form className="form-inline" onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          className="form-control mb-2 mr-sm-2 mb-sm-0"
+          value={this.state.value}
+          placeholder={this.props.placeholder}
+          onChange={this.handleChange}
+        />
+        <button type="submit" className="btn btn-primary">Add</button>
+      </form>
+    )
+  }
+}
+
+const Todo = (props) => {
   return (
-    <form className="form-inline" onSubmit={props.handleSubmit}>
-      <input
-        type="text"
-        className="form-control mb-2 mr-sm-2 mb-sm-0"
-        value={props.value}
-        placeholder={props.placeholder}
-        onChange={props.handleChange}
-      />
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
+    <li className="list-group-item">{props.text}</li>
+  )
+}
+
+const TodoList = (props) => {
+  return (
+    <ul className="list-group">
+      {props.list.map((v, i) => <Todo id={i} text={v.text} done={v.done}/>)}
+    </ul>
   )
 }
 
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.addTodo = this.addTodo.bind(this)
     this.state = {
-      add: '',
-      todos: []
+      todos: [
+        {
+          done: false,
+          text: 'Todo 1'
+        },
+        {
+          done: false,
+          text: 'Todo 2'
+        }
+      ]
     }
   }
 
-  handleSubmit (e) {
-    e.preventDefault()
-    console.log(this.state.add)
-  }
-
-  handleChange (e) {
-    this.setState({
-      add: e.target.value
-    })
+  addTodo (value) {
+    console.log(value)
   }
 
   render () {
@@ -56,10 +95,10 @@ class App extends React.Component {
         <Title text="Todo Application"/>
         <TodoNew
           placeholder="New Todo"
-          value={this.state.add}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
+          value=""
+          add={this.addTodo}
         />
+        <TodoList list={this.state.todos}/>
       </div>
     )
   }
