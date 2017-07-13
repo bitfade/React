@@ -62,15 +62,15 @@ class Todo extends React.Component {
     super(props)
     this.id = props.id
     this.toggle = this.toggle.bind(this)
-    this.delete = this.delete.bind(this)
+    this.remove = this.remove.bind(this)
   }
 
   toggle (e) {
-    console.log('toggle', this.id)
+    this.props.toggle(this.id)
   }
 
-  delete (e) {
-    console.log('delete', this.id)
+  remove (e) {
+    this.props.remove(this.id)
   }
 
   render () {
@@ -79,7 +79,7 @@ class Todo extends React.Component {
       <li className="list-group-item todo">
         <i className={className} onClick={this.toggle}></i>
         {this.props.text}
-        <i className="todo-delete fa fa-minus-circle text-danger" onClick={this.delete}></i>
+        <i className="todo-delete fa fa-minus-circle text-danger" onClick={this.remove}></i>
       </li>
     )
   }
@@ -120,16 +120,25 @@ class App extends React.Component {
     }
   }
 
-  addTodo (value) {
-    console.log(value)
+  addTodo (text) {
+    if (text) {
+      this.setState((prevState, props) => ({
+        todos: [...prevState.todos, {text, done: false}]
+      }))
+    }
   }
 
   toggleTodo (id) {
-    console.log(id)
+    this.setState((prevState, props) => {
+      prevState.todos[id].done = !prevState.todos[id].done
+      return prevState
+    })
   }
 
   removeTodo (id) {
-    console.log(id)
+    this.setState((prevState, props) => ({
+      todos: prevState.todos.filter((v,i) => i !== id )
+    }))
   }
 
   render () {

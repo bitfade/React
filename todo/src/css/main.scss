@@ -15,16 +15,17 @@ body {
 }
 
 .todo {
-  cursor: pointer;
 }
 
 .todo-status {
+  cursor: pointer;
   color: #464E57;
   margin-right: 10px;
   font-size: 20px;
 }
 
 .todo-delete {
+  cursor: pointer;
   margin-left: auto;
   font-size: 20px;
 }
