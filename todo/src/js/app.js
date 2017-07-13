@@ -108,14 +108,14 @@ class App extends React.Component {
     this.removeTodo = this.removeTodo.bind(this)
     this.state = {
       todos: [
-        {
-          done: false,
-          text: 'Todo 1'
-        },
-        {
-          done: true,
-          text: 'Very very long Todo 2'
-        }
+        // {
+        //   done: false,
+        //   text: 'Todo 1'
+        // },
+        // {
+        //   done: true,
+        //   text: 'Very very long Todo 2'
+        // }
       ]
     }
   }
