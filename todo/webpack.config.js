@@ -23,7 +23,7 @@ const autoprefixer = require('autoprefixer')
 
 const common = {
   entry: {
-    app: path.join(PATHS.js, 'init.js')
+    app: path.join(PATHS.js, 'app.js')
   },
   output: {
     path: PATHS.build,
