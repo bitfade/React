@@ -10,9 +10,6 @@ export default class TodoApp extends React.Component {
     this.addTodo = this.addTodo.bind(this)
     this.toggleTodo = this.toggleTodo.bind(this)
     this.removeTodo = this.removeTodo.bind(this)
-    this.state = {
-      todos: []
-    }
   }
 
   addTodo (text) {
@@ -46,7 +43,7 @@ export default class TodoApp extends React.Component {
           add={this.addTodo}
         />
         <TodoList
-          list={this.state.todos}
+          list={this.props.todos}
           toggle={this.toggleTodo}
           remove={this.removeTodo}
         />

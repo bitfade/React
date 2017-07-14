@@ -2,6 +2,9 @@ import Immutable from 'immutable'
 import {ReduceStore} from 'flux/utils'
 import TodoActionTypes from 'data/TodoActionTypes'
 import TodoDispatcher from 'data/TodoDispatcher'
+import Todo from 'data/Todo'
+
+let counter = 0
 
 class TodoStore extends ReduceStore {
   constructor () {
@@ -15,7 +18,19 @@ class TodoStore extends ReduceStore {
   reduce (state, action) {
     switch (action.type) {
       case TodoActionTypes.ADD_TODO:
-        return state
+        const id = counter++
+        return state.set(
+          id,
+          new Todo({
+            id,
+            text: action.text,
+            done: false
+          })
+        )
+
+      case TodoActionTypes.DELETE_TODO:
+        return state.delete(action.id)
+
       default:
         return state
     }
