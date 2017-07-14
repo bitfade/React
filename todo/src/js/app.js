@@ -7,18 +7,14 @@ import ReactDOM from 'react-dom'
 import 'plugins/bootstrap'
 import 'main.scss'
 
-import TodoAppContainer from 'containers/TodoAppContainer'
-import TodoActions from 'data/TodoActions'
+// import TodoAppContainer from 'containers/TodoAppContainer'
+import TodoApp from 'components/TodoApp'
 
 if (module.hot) {
   module.hot.accept()
 }
 
 ReactDOM.render(
-  <TodoAppContainer/>,
+  <TodoApp/>,
   document.getElementById('app')
 )
-
-TodoActions.addTodo('test 1')
-TodoActions.addTodo('test 2')
-TodoActions.deleteTodo(1)

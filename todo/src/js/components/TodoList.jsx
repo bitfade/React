@@ -4,9 +4,9 @@ import Todo from 'components/Todo'
 const TodoList = (props) => {
   return (
     <ul className="list-group todo-list">
-      {[...props.list.values()].reverse().map((v, i) => <Todo
-        key={i}
-        id={i}
+      {[...props.list.values()].map(v => <Todo
+        key={v.id}
+        id={v.id}
         text={v.text}
         done={v.done}
         toggle={props.toggle}

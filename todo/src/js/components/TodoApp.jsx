@@ -4,33 +4,22 @@ import Title from 'components/Title'
 import TodoList from 'components/TodoList'
 import TodoNew from 'components/TodoNew'
 
-export default class TodoApp extends React.Component {
-  constructor (props) {
-    super(props)
-    this.addTodo = this.addTodo.bind(this)
-    this.toggleTodo = this.toggleTodo.bind(this)
-    this.removeTodo = this.removeTodo.bind(this)
+import TodoStore from 'data/TodoStore'
+import TodoActions from 'data/TodoActions'
+import {Container} from 'flux/utils'
+
+class TodoApp extends React.Component {
+  static getStores () {
+    return [TodoStore]
   }
 
-  addTodo (text) {
-    if (text) {
-      this.setState((prevState, props) => ({
-        todos: [...prevState.todos, {text, done: false}]
-      }))
+  static calculateState (prevState) {
+    return {
+      todos: TodoStore.getState(),
+      onAddTodo: TodoActions.addTodo,
+      onDeleteTodo: TodoActions.deleteTodo,
+      onToggleTodo: TodoActions.toggleTodo
     }
-  }
-
-  toggleTodo (id) {
-    this.setState((prevState, props) => {
-      prevState.todos[id].done = !prevState.todos[id].done
-      return prevState
-    })
-  }
-
-  removeTodo (id) {
-    this.setState((prevState, props) => ({
-      todos: prevState.todos.filter((v, i) => i !== id)
-    }))
   }
 
   render () {
@@ -40,14 +29,17 @@ export default class TodoApp extends React.Component {
         <TodoNew
           placeholder="New Todo"
           value=""
-          add={this.addTodo}
+          add={this.state.onAddTodo}
         />
         <TodoList
-          list={this.props.todos}
-          toggle={this.toggleTodo}
-          remove={this.removeTodo}
+          list={this.state.todos}
+          toggle={this.state.onToggleTodo}
+          remove={this.state.onDeleteTodo}
         />
       </div>
     )
   }
 }
+
+const container = Container.create(TodoApp)
+export default container

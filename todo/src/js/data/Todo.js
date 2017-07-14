@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 const Todo = Immutable.Record({
   id: '',
   text: '',
-  jone: false
+  done: false
 })
 
 export default Todo
