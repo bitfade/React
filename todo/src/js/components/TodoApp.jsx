@@ -15,26 +15,23 @@ class TodoApp extends React.Component {
 
   static calculateState (prevState) {
     return {
-      todos: TodoStore.getState(),
-      onAddTodo: TodoActions.addTodo,
-      onDeleteTodo: TodoActions.deleteTodo,
-      onToggleTodo: TodoActions.toggleTodo
+      todos: TodoStore.getState()
     }
   }
 
   render () {
     return (
       <div className="todo-application">
-        <Title text="Todo React Application"/>
+        <Title text="React / Flux Todo List"/>
         <TodoNew
           placeholder="New Todo"
           value=""
-          add={this.state.onAddTodo}
+          add={TodoActions.addTodo}
         />
         <TodoList
           list={this.state.todos}
-          toggle={this.state.onToggleTodo}
-          remove={this.state.onDeleteTodo}
+          toggle={TodoActions.toggleTodo}
+          remove={TodoActions.deleteTodo}
         />
       </div>
     )

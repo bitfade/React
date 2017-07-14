@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom'
 import 'plugins/bootstrap'
 import 'main.scss'
 
-// import TodoAppContainer from 'containers/TodoAppContainer'
 import TodoApp from 'components/TodoApp'
 
 if (module.hot) {
