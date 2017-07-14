@@ -7,13 +7,13 @@ import ReactDOM from 'react-dom'
 import 'plugins/bootstrap'
 import 'main.scss'
 
-import TodoApp from 'components/TodoApp'
+import TodoAppContainer from 'containers/TodoAppContainer'
 
 if (module.hot) {
   module.hot.accept()
 }
 
 ReactDOM.render(
-  <TodoApp />,
+  <TodoAppContainer/>,
   document.getElementById('app')
 )

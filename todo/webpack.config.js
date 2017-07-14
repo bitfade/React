@@ -107,7 +107,7 @@ switch (process.env.npm_lifecycle_event) {
     const ReloadPlugin = require('reload-html-webpack-plugin')
     config = merge(
       common, {
-        // devtool: 'eval-source-map',
+        devtool: 'eval-source-map',
         devServer: {
           contentBase: './dist',
           // historyApiFallback: true,

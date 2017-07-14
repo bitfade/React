@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Title from 'components/Title'
-import TodoNew from 'components/TodoNew'
 import TodoList from 'components/TodoList'
+import TodoNew from 'components/TodoNew'
 
 export default class TodoApp extends React.Component {
   constructor (props) {
