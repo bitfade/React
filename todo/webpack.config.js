@@ -34,7 +34,8 @@ const common = {
       PATHS.css,
       PATHS.js,
       PATHS.plugins
-    ]
+    ],
+    extensions: ['', '.js', '.jsx']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -58,7 +59,7 @@ const common = {
         loader: 'html'
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loaders: ['babel'],
         include: PATHS.js
       }
