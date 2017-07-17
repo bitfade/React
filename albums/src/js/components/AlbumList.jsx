@@ -13,7 +13,7 @@ export default class AlbumList extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.loadAlbums()
+    this.props.change()
     // console.log(e.target)
   }
 

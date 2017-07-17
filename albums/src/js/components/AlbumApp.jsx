@@ -1,4 +1,5 @@
 import React from 'react'
+import Spinner from 'react-spinner-material'
 import AlbumStore from '../stores/AlbumStore'
 import AlbumActions from '../actions/AlbumActions'
 import AlbumList from './AlbumList'
@@ -6,10 +7,7 @@ import AlbumList from './AlbumList'
 export default class AlbumApp extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      authors: [],
-      albums: []
-    }
+    this.state = AlbumStore.getData()
 
     this._onChange = this._onChange.bind(this)
     this.loadAuthors = this.loadAuthors.bind(this)
@@ -28,10 +26,7 @@ export default class AlbumApp extends React.Component {
   }
 
   _onChange () {
-    this.setState({
-      // albums: AlbumStore.getAlbums()
-      // albums: AlbumStore.getAlbums()
-    })
+    this.setState(AlbumStore.getData())
   }
 
   loadAuthors () {
@@ -43,12 +38,20 @@ export default class AlbumApp extends React.Component {
   }
 
   render () {
+    console.log(this.state)
     return (
       <div className="album-application">
+        <div className="text-center">
+          <Spinner width={50}
+            height={70}
+            spinnerColor={'#333'}
+            spinnerWidth={5}
+            show={this.state.loading} />
+        </div>
         <AlbumList
           list={this.state.authors}
-          change={this.loadAlbums}
-          />
+          change={this.loadAuthors}
+        />
       </div>
     )
   }
