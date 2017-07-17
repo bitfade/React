@@ -55,7 +55,7 @@ class AlbumStore extends EventEmitter {
   }
 
   getAlbums () {
-    return this._albumns
+    return this._albums
   }
 }
 

@@ -11,12 +11,12 @@ export default class AlbumApp extends React.Component {
     }
 
     this._onChange = this._onChange.bind(this)
+    this.loadAlbums = this.loadAlbums.bind(this)
   }
 
   componentDidMount () {
     console.log('mount')
     AlbumStore.addChangeListener(this._onChange)
-    AlbumActions.loadAlbums()
   }
 
   componentWillUnmount () {
@@ -26,15 +26,23 @@ export default class AlbumApp extends React.Component {
   }
 
   _onChange () {
+    console.log(AlbumStore)
     this.setState({
       albums: AlbumStore.getAlbums()
     })
   }
 
+  loadAlbums () {
+    AlbumActions.loadAlbums()
+  }
+
   render () {
     return (
       <div className="album-application">
-        <AlbumList list={this.state.albums}/>
+        <AlbumList
+          list={this.state.albums}
+          loadAlbums={this.loadAlbums}
+        />
       </div>
     )
   }
