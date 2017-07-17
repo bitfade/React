@@ -3,7 +3,6 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import AlbumActions from './actions/AlbumActions'
 
 import 'plugins/bootstrap'
 import 'main.scss'
@@ -18,5 +17,3 @@ ReactDOM.render(
   <AlbumApp/>,
   document.getElementById('app')
 )
-
-AlbumActions.loadAlbums()

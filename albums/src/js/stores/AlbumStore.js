@@ -29,11 +29,17 @@ class AlbumStore extends EventEmitter {
       }
     ]
     this.handleActions = this.handleActions.bind(this)
+    this.emitChange = this.emitChange.bind(this)
+    this.addChangeListener = this.addChangeListener.bind(this)
+    this.removeChangeListener = this.removeChangeListener.bind(this)
+    this.getAlbums = this.getAlbums.bind(this)
+
     this._token = dispatcher.register(this.handleActions)
   }
 
   handleActions (action) {
     console.log(action)
+    this.emitChange()
   }
 
   emitChange () {
@@ -51,7 +57,6 @@ class AlbumStore extends EventEmitter {
   getAlbums () {
     return this._albumns
   }
-
 }
 
 export default new AlbumStore()
