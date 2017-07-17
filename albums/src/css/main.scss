@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+
+body {
+  padding-top: 5rem;
+}
+
+.album-application {
+  max-width: 440px;
+  margin: auto;
+}
+
+.album-new {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.album {
+}
+
+.album-status {
+  cursor: pointer;
+  color: #464E57;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.album-delete {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 20px;
+}
