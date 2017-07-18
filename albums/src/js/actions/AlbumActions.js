@@ -49,7 +49,7 @@ export default class AlbumActions {
       actionType: AlbumActionConstants.CURRENT_ALBUM,
       value: id
     })
-    // this.loadAlbums(id)
+    this.loadPhotos(id)
   }
 
   static loadAlbums (id) {
@@ -61,6 +61,19 @@ export default class AlbumActions {
         value: albums
       })
       this.currentAlbum(albums[0].id)
+    }).catch(error => {
+      this.error(error)
+    })
+  }
+
+  static loadPhotos (id) {
+    this.loading()
+    AlbumAPI.photos(id).then(photos => {
+      this.loaded()
+      dispatcher.dispatch({
+        actionType: AlbumActionConstants.PHOTOS,
+        value: photos
+      })
     }).catch(error => {
       this.error(error)
     })

@@ -12,7 +12,8 @@ class AlbumStore extends EventEmitter {
       currentAuthor: false,
       authors: [],
       currentAlbum: false,
-      albums: []
+      albums: [],
+      photos: []
     }
 
     this.handleActions = this.handleActions.bind(this)
@@ -48,6 +49,10 @@ class AlbumStore extends EventEmitter {
         break
       case AlbumActionConstants.CURRENT_ALBUM:
         this.data.currentAlbum = action.value
+        this.emitChange()
+        break
+      case AlbumActionConstants.PHOTOS:
+        this.data.photos = action.value
         this.emitChange()
         break
     }

@@ -6,6 +6,7 @@ const AlbumActionConstants = {
   CURRENT_AUTHOR: 'current_author',
   ALBUMS: 'albums',
   CURRENT_ALBUM: 'current_album',
+  PHOTOS: 'photos'
 }
 
 export default AlbumActionConstants

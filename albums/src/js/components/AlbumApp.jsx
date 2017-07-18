@@ -3,6 +3,7 @@ import Spinner from 'react-spinner-material'
 import AlbumStore from '../stores/AlbumStore'
 import AlbumActions from '../actions/AlbumActions'
 import AlbumList from './AlbumList'
+import AlbumPhotos from './AlbumPhotos'
 
 export default class AlbumApp extends React.Component {
   constructor (props) {
@@ -66,6 +67,7 @@ export default class AlbumApp extends React.Component {
           change={this.currentAlbum}
           reload={this.loadAlbums}
         />
+        <AlbumPhotos list={this.state.photos}/>
       </div>
     )
   }

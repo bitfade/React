@@ -1,12 +1,4 @@
 class AlbumAPI {
-  constructor () {
-    this.authors = this.authors.bind(this)
-    this.url = this.url.bind(this)
-    this.check = this.check.bind(this)
-    this.fetch = this.fetch.bind(this)
-    this.authors = this.authors.bind(this)
-  }
-
   url (...opts) {
     return 'https://jsonplaceholder.typicode.com/' + opts.join('/')
   }
@@ -32,6 +24,17 @@ class AlbumAPI {
         v => ({
           id: v.id,
           title: v.title
+        })
+      )
+    )
+  }
+
+  photos (id) {
+    return this.fetch('albums', id, 'photos').then(
+      response => response.map(
+        v => ({
+          id: v.id,
+          src: v.thumbnailUrl
         })
       )
     )
