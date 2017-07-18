@@ -57,15 +57,15 @@ export default class AlbumApp extends React.Component {
         </div>
         <AlbumList
           list={this.state.authors}
+          label="Author"
           selected={this.state.currentAuthor}
           change={this.currentAuthor}
-          reload={this.loadAuthors}
         />
         <AlbumList
           list={this.state.albums}
+          label="Album"
           selected={this.state.currentAlbum}
           change={this.currentAlbum}
-          reload={this.loadAlbums}
         />
         <AlbumPhotos list={this.state.photos}/>
       </div>

@@ -13,19 +13,16 @@ export default class AlbumList extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.reload()
   }
 
   render () {
     return (
       <form className="form album-list" onSubmit={this.handleSubmit}>
-        <div className="input-group">
+        <div className="form-group">
+          <label>{this.props.label}</label>
           <select className="form-control" onChange={this.handleChange} value={this.props.selected}>
             {this.props.list.map(v => <option key={v.id} value={v.id}>{v.title}</option>)}
           </select>
-          <span className="input-group-btn">
-            <button type="submit" className="btn btn-primary">Reload</button>
-          </span>
         </div>
       </form>
     )
