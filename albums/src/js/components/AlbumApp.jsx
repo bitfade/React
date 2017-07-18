@@ -15,13 +15,11 @@ export default class AlbumApp extends React.Component {
   }
 
   componentDidMount () {
-    console.log('mount')
     AlbumStore.addChangeListener(this._onChange)
     AlbumActions.loadAuthors()
   }
 
   componentWillUnmount () {
-    console.log('umount')
     AlbumStore.removeChangeListener(this._onChange)
   }
 
@@ -38,7 +36,6 @@ export default class AlbumApp extends React.Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <div className="album-application">
         <div className="text-center">

@@ -9,28 +9,7 @@ class AlbumStore extends EventEmitter {
     super()
     this.data = {
       loading: false,
-      authors: [
-        {
-          id: 1,
-          userId: 1,
-          title: 'Album 1'
-        },
-        {
-          id: 2,
-          userId: 1,
-          title: 'Album 2'
-        },
-        {
-          id: 3,
-          userId: 1,
-          title: 'Album 3'
-        },
-        {
-          id: 4,
-          userId: 1,
-          title: 'Album 4'
-        }
-      ]
+      authors: []
     }
 
     this.handleActions = this.handleActions.bind(this)
@@ -43,15 +22,11 @@ class AlbumStore extends EventEmitter {
   }
 
   handleActions (action) {
-    console.log(action)
+    console.log(action.actionType)
     switch (action.actionType) {
       case AlbumActionConstants.LOAD_AUTHORS:
         this.data.loading = true
         this.emitChange()
-        setTimeout(() => {
-          this.data.loading = false
-          this.emitChange()
-        }, 2000)
         break
     }
   }
