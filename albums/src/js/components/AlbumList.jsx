@@ -8,20 +8,19 @@ export default class AlbumList extends React.Component {
   }
 
   handleChange (e) {
-    // console.log(e.target)
+    this.props.change(e.target.value)
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.change()
-    // console.log(e.target)
+    this.props.reload()
   }
 
   render () {
     return (
       <form className="form album-list" onSubmit={this.handleSubmit}>
         <div className="input-group">
-          <select className="form-control" onChange={this.handleChange}>
+          <select className="form-control" onChange={this.handleChange} value={this.props.selected}>
             {this.props.list.map(v => <option key={v.id} value={v.id}>{v.title}</option>)}
           </select>
           <span className="input-group-btn">

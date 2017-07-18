@@ -7,20 +7,34 @@ class AlbumAPI {
     this.authors = this.authors.bind(this)
   }
 
-  url (endpoint) {
-    return 'https://jsonplaceholder.typicode.com/' + endpoint
+  url (...opts) {
+    return 'https://jsonplaceholder.typicode.com/' + opts.join('/')
   }
 
-  fetch (endpoint) {
-    return fetch(this.url(endpoint)).then(this.check).then(response => response.json())
+  fetch (...opts) {
+    return fetch(this.url(...opts)).then(this.check).then(response => response.json())
   }
 
   authors () {
-    return this.fetch('users').then((response) => {
-      console.log('parse', response)
-      // return response.json().then()
-      return 'ok'
-    })
+    return this.fetch('users').then(
+      response => response.map(
+        v => ({
+          id: v.id,
+          title: v.name
+        })
+      )
+    )
+  }
+
+  albums (id) {
+    return this.fetch('users', id, 'albums').then(
+      response => response.map(
+        v => ({
+          id: v.id,
+          title: v.title
+        })
+      )
+    )
   }
 
   check (response) {

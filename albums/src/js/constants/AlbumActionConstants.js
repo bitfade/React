@@ -1,6 +1,11 @@
 const AlbumActionConstants = {
-  LOAD_AUTHORS: 'load-authors',
-  LOAD_ALBUMS: 'load-albums'
+  LOADING: 'loading',
+  LOADED: 'loaded',
+  ERROR: 'error',
+  AUTHORS: 'authors',
+  CURRENT_AUTHOR: 'current_author',
+  ALBUMS: 'albums',
+  CURRENT_ALBUM: 'current_album',
 }
 
 export default AlbumActionConstants

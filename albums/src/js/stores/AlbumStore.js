@@ -9,7 +9,10 @@ class AlbumStore extends EventEmitter {
     super()
     this.data = {
       loading: false,
-      authors: []
+      currentAuthor: false,
+      authors: [],
+      currentAlbum: false,
+      albums: []
     }
 
     this.handleActions = this.handleActions.bind(this)
@@ -22,10 +25,29 @@ class AlbumStore extends EventEmitter {
   }
 
   handleActions (action) {
-    console.log(action.actionType)
     switch (action.actionType) {
-      case AlbumActionConstants.LOAD_AUTHORS:
+      case AlbumActionConstants.LOADING:
         this.data.loading = true
+        this.emitChange()
+        break
+      case AlbumActionConstants.LOADED:
+        this.data.loading = false
+        this.emitChange()
+        break
+      case AlbumActionConstants.AUTHORS:
+        this.data.authors = action.value
+        this.emitChange()
+        break
+      case AlbumActionConstants.CURRENT_AUTHOR:
+        this.data.currentAuthor = action.value
+        this.emitChange()
+        break
+      case AlbumActionConstants.ALBUMS:
+        this.data.albums = action.value
+        this.emitChange()
+        break
+      case AlbumActionConstants.CURRENT_ALBUM:
+        this.data.currentAlbum = action.value
         this.emitChange()
         break
     }

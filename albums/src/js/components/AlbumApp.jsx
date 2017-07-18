@@ -10,6 +10,7 @@ export default class AlbumApp extends React.Component {
     this.state = AlbumStore.getData()
 
     this._onChange = this._onChange.bind(this)
+    this.currentAuthor = this.currentAuthor.bind(this)
     this.loadAuthors = this.loadAuthors.bind(this)
     this.loadAlbums = this.loadAlbums.bind(this)
   }
@@ -32,7 +33,15 @@ export default class AlbumApp extends React.Component {
   }
 
   loadAlbums () {
-    // AlbumActions.loadAlbums()
+    AlbumActions.loadAlbums(this.state.currentAuthor)
+  }
+
+  currentAuthor (id) {
+    AlbumActions.currentAuthor(id)
+  }
+
+  currentAlbum (id) {
+    AlbumActions.currentAlbum(id)
   }
 
   render () {
@@ -47,7 +56,15 @@ export default class AlbumApp extends React.Component {
         </div>
         <AlbumList
           list={this.state.authors}
-          change={this.loadAuthors}
+          selected={this.state.currentAuthor}
+          change={this.currentAuthor}
+          reload={this.loadAuthors}
+        />
+        <AlbumList
+          list={this.state.albums}
+          selected={this.state.currentAlbum}
+          change={this.currentAlbum}
+          reload={this.loadAlbums}
         />
       </div>
     )
